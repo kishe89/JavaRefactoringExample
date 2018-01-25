@@ -1,10 +1,11 @@
-package example_10_replace_typecode_stratergy;
+package example_13_duplicate_observed_data;
 
 import java.util.ArrayList;
 
 public class ArticleManager {
 	private static final ArticleManager instance = new ArticleManager();
 	private ArrayList<Article> list = new ArrayList<>();
+	private AdapterUpdateListener adapter;
 	public static ArticleManager getInstance() {
 		return instance;
 	}
@@ -37,11 +38,7 @@ public class ArticleManager {
 		}
 		return new ManagedArticle(NullArticle.getInstance());
 	}
-	public void printCurrentArticle() {
-		for(Article article : this.list) {
-			article.print();
-		}
-	}
+	
 	public ManagedArticle updateArticle(Article article, int index) {
 		if(index > this.list.size()-1 || index == -1) {
 			return createArticle(article.getTitle(),
@@ -59,5 +56,14 @@ public class ArticleManager {
 	public ArrayList<Article> getList() {
 		return list;
 	}
-	
+	public void notifyDataSetChanged() {
+		if(adapter == null) {
+			throw new NullPointerException("listener is null. please call setUpdateListener method");
+		}
+		
+		this.adapter.updateData(list);
+	}
+	public void setAdapter(AdapterUpdateListener adapter) {
+		this.adapter = adapter;
+	}
 }

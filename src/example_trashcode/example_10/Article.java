@@ -1,4 +1,6 @@
-package example_10_replace_typecode_stratergy;
+package example_trashcode.example_10;
+
+import example_10_replace_typecode_stratergy.ArticleType;
 
 public class Article {
 	private String title;
@@ -9,13 +11,13 @@ public class Article {
 	public static final int MYARTICLE = 0;
 	public static final int SHAREDARTICLE = 1;
 	public static final int ADARTICLE = 2;
-	private ArticleTypeEnum type;
+	private ArticleType type;
 	
 	public Article() {
 		super();
 	}
 
-	public Article(String title, String content, String authorName, String authorMail,ArticleTypeEnum type) {
+	public Article(String title, String content, String authorName, String authorMail,ArticleType type) {
 		super();
 		this.title = title;
 		this.content = content;
@@ -24,11 +26,11 @@ public class Article {
 		this.type = type;
 	}
 
-	public void changeType(ArticleTypeEnum type) {
+	public void changeType(ArticleType type) {
 		this.type = type;
 	}
 	public void print() {
-		getType().print(this);
+		
 	};
 	public String getTitle() {
 		return title;
@@ -55,9 +57,11 @@ public class Article {
 	public PostedAt getPostedAt() {
 		return postedAt;
 	}
+	public int getTypeCode() {
+		return type.getTypeCode();
+	}
 	
-	
-	public ArticleTypeEnum getType() {
+	public ArticleType getType() {
 		return type;
 	}
 	

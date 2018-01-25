@@ -1,6 +1,8 @@
-package example_10_replace_typecode_stratergy;
+package example_trashcode.example_10;
 
 import java.util.ArrayList;
+
+import example_10_replace_typecode_stratergy.ArticleType;
 
 public class ArticleManager {
 	private static final ArticleManager instance = new ArticleManager();
@@ -11,7 +13,7 @@ public class ArticleManager {
 	public ArticleManager() {
 		super();
 	}
-	public ManagedArticle createArticle(String title, String content, String authorName, String authorMail,ArticleTypeEnum type) {
+	public ManagedArticle createArticle(String title, String content, String authorName, String authorMail,ArticleType type) {
 		this.list.add(new Article(title,content,authorName,authorMail,type));
 		return new ManagedArticle(this.list.get(this.list.size()-1),this.list.size()-1);
 	}
@@ -23,7 +25,7 @@ public class ArticleManager {
 		}
 		return new ManagedArticle(NullArticle.getInstance());
 	}
-	public ManagedArticle removeArticle() throws NullPointerException {
+	public ManagedArticle removeArticle() {
 		if(list.size() != 0) {
 			return new ManagedArticle(this.list.remove(list.size()-1),list.size()-1);
 		}
@@ -52,12 +54,6 @@ public class ArticleManager {
 		}else {
 			return new ManagedArticle(this.list.set(index, article),index);
 		}
-	}
-	public void setList(ArrayList<Article> list) {
-		this.list = list;
-	}
-	public ArrayList<Article> getList() {
-		return list;
 	}
 	
 }

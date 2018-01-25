@@ -1,4 +1,4 @@
-package example_10_replace_typecode_stratergy;
+package example_13_duplicate_observed_data;
 
 public abstract class ArticleType {
 	

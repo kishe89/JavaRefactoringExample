@@ -1,35 +1,25 @@
-package example_10_replace_typecode_stratergy;
+package example12_replace_constructor_factory;
 
-public class Article {
+public abstract class Article {
 	private String title;
 	private String content;
 	private String password;
 	private Author author;
 	private PostedAt postedAt;
-	public static final int MYARTICLE = 0;
-	public static final int SHAREDARTICLE = 1;
-	public static final int ADARTICLE = 2;
-	private ArticleTypeEnum type;
 	
-	public Article() {
+	protected Article() {
 		super();
 	}
 
-	public Article(String title, String content, String authorName, String authorMail,ArticleTypeEnum type) {
+	protected Article(String title, String content, String authorName, String authorMail) {
 		super();
 		this.title = title;
 		this.content = content;
 		this.author = new Author(authorName, authorMail);
 		this.postedAt = new PostedAt();
-		this.type = type;
 	}
 
-	public void changeType(ArticleTypeEnum type) {
-		this.type = type;
-	}
-	public void print() {
-		getType().print(this);
-	};
+	public abstract void print();
 	public String getTitle() {
 		return title;
 	}
@@ -48,21 +38,18 @@ public class Article {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public ImmutableAuthor getAuthor() {
 		return author;
 	}
 	public PostedAt getPostedAt() {
 		return postedAt;
 	}
-	
-	
-	public ArticleTypeEnum getType() {
-		return type;
-	}
-	
+
 	public boolean isNull() {
 		return false;
 	}
+
 	
+
 }

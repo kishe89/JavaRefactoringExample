@@ -1,4 +1,4 @@
-package example_10_replace_typecode_stratergy;
+package example_13_duplicate_observed_data;
 
 public class Article {
 	private String title;
@@ -27,9 +27,7 @@ public class Article {
 	public void changeType(ArticleTypeEnum type) {
 		this.type = type;
 	}
-	public void print() {
-		getType().print(this);
-	};
+	
 	public String getTitle() {
 		return title;
 	}

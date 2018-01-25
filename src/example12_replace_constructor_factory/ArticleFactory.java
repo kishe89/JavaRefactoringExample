@@ -1,4 +1,5 @@
-package example_10_replace_typecode_stratergy;
+package example12_replace_constructor_factory;
+
 
 public abstract class ArticleFactory {
 	public abstract Article create(String title, String content, String authorName, String authorMail);
